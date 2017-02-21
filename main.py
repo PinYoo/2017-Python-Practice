@@ -3,7 +3,6 @@ import sys
 from datetime import datetime
 
 import tensorflow as tf
-import cv2
 
 '''
 1. import `Video` and `save_video` from the correct module of package "styler"
@@ -52,13 +51,7 @@ def main():
         3. Write a list comprehension to iterate through all frames,
            and make it be processed by Tensorflow.
         '''
-        num = 1
-        processed = []
-        for frame in frames:
-            logging.info("Processing frame %d" % num)
-            num += 1
-            output = session.run(out, feed_dict={image: [frame]})
-            processed.append(output)
+        processed = [ session.run(out, feed_dict={image: [frame]}) for frame in frames]
 
         '''
         4. Pass the results as a argument into function
