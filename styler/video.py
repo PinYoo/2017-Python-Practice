@@ -32,8 +32,7 @@ class Video:
             ret, frame = self.cap.read()
             if(ret == False):
                 break
-            frame = cv2.resize(frame, (image_h, image_w))
-            frames.append(frame)
+            frames.append(resize(frame, image_h, image_w))
         
         self.frames = frames  # 5-3 let object have the result
         return self.frames  # return your results
